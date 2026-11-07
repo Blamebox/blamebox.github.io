@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BlameBox — sache enfin pourquoi ta connexion coupe</title>
+<meta name="description" content="Wi-Fi, box, opérateur ou DNS : un outil libre qui tourne chez toi, explique chaque panne et prépare le rapport pour ton opérateur.">
+<meta name="theme-color" content="#0E1424">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BlameBox">
+<meta property="og:title" content="BlameBox — sache enfin pourquoi ta connexion coupe">
+<meta property="og:description" content="Wi-Fi, box, opérateur ou DNS : un outil libre qui tourne chez toi, explique chaque panne et prépare le rapport pour ton opérateur.">
+<meta property="og:url" content="https://blamebox.github.io/">
+<meta property="og:image" content="https://blamebox.github.io/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#0E1424; --panel:#161E33; --line:#26314F; --ink:#FFFFFF; --muted:#9AA4B8; --acc:#40D6BA; --red:#FF4D6D; --yel:#FFE135; --grn:#3DDC84; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:Inter,system-ui,sans-serif; line-height:1.55; }
+a { color:inherit; }
+.wrap { max-width:1060px; margin:0 auto; padding:0 20px; }
+nav { display:flex; align-items:center; justify-content:space-between; padding:18px 0; gap:12px; }
+.logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); font-size:21px; letter-spacing:-.035em; line-height:1; }
+.logo b { font-weight:700; } .logo span { font-weight:400; }
+.navr { display:flex; gap:10px; align-items:center; }
+.lang { background:none; border:1px solid var(--line); color:var(--muted); border-radius:8px; padding:6px 10px; font:600 13px Inter,sans-serif; cursor:pointer; }
+.btn { display:inline-block; background:var(--acc); color:#06231E; font-weight:700; text-decoration:none; padding:12px 20px; border-radius:12px; }
+.btn.small { padding:8px 14px; font-size:14px; }
+.btn.ghost { background:none; color:var(--ink); border:1px solid var(--line); }
+header.hero { display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center; padding:48px 0 56px; }
+h1 { font-size:clamp(34px,5vw,54px); line-height:1.08; margin:0 0 18px; letter-spacing:-.02em; }
+h1 mark { background:var(--yel); color:var(--bg); padding:0 .15em; border-radius:6px; }
+.lead { color:var(--muted); font-size:18px; margin:0 0 26px; }
+.ctas { display:flex; gap:12px; flex-wrap:wrap; }
+.badges { display:flex; gap:8px; flex-wrap:wrap; margin-top:22px; }
+.badge { border:1px solid var(--line); color:var(--muted); border-radius:999px; padding:5px 12px; font-size:13px; }
+.notif { background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:18px; box-shadow:0 20px 60px rgba(0,0,0,.35); }
+.notif .t { display:flex; align-items:center; gap:10px; font-weight:700; }
+.pill { font-size:12px; font-weight:700; padding:3px 9px; border-radius:999px; }
+.pill.red { background:rgba(255,77,109,.15); color:var(--red); }
+.notif p { color:#D7DCE6; margin:12px 0; }
+.chain { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin:14px 0 12px; font-size:13px; font-weight:600; }
+.chain span { padding:5px 10px; border-radius:8px; }
+.ok { background:rgba(61,220,132,.14); color:var(--grn); } .ko { background:rgba(255,77,109,.15); color:var(--red); }
+.arrow { color:var(--muted); }
+.added { color:var(--acc); font-size:14px; font-weight:600; }
+section { padding:56px 0; border-top:1px solid var(--line); }
+h2 { font-size:clamp(26px,3.4vw,36px); margin:0 0 10px; letter-spacing:-.01em; }
+.sec-lead { color:var(--muted); margin:0 0 28px; max-width:640px; }
+.steps { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.step { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; }
+.step .n { color:var(--acc); font-weight:800; font-size:13px; }
+.step h3 { margin:6px 0 6px; font-size:17px; }
+.step p { margin:0; color:var(--muted); font-size:14px; }
+.report { display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center; }
+.report img { width:100%; border-radius:12px; border:1px solid var(--line); display:block; }
+ul.checks { list-style:none; padding:0; margin:0 0 22px; }
+ul.checks li { padding:8px 0 8px 30px; position:relative; color:#D7DCE6; }
+ul.checks li::before { content:"✓"; position:absolute; left:0; top:7px; color:var(--grn); font-weight:800; }
+.plans { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.plan { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px; }
+.plan h3 { margin:0 0 4px; } .plan .p { color:var(--muted); margin:0 0 12px; font-size:14px; }
+.plan.pro { border-color:var(--acc); }
+details { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin-bottom:10px; }
+summary { cursor:pointer; font-weight:600; }
+details p { color:var(--muted); margin:10px 0 0; }
+.final { text-align:center; }
+.final .ctas { justify-content:center; }
+.privacy { color:var(--muted); font-size:13px; margin-top:12px; }
+footer { color:var(--muted); font-size:13px; padding:28px 0 40px; border-top:1px solid var(--line); }
+@media (max-width:820px) {
+  header.hero, .report, .plans { grid-template-columns:1fr; }
+  .steps { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:480px) { .steps { grid-template-columns:1fr; } .navr .btn { display:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#" aria-label="BlameBox, retour en haut">
+      <svg width="32" height="32" viewBox="0 0 100 100" aria-hidden="true"><path fill="#0E1424" stroke="#0E1424" stroke-width="2.5" stroke-linejoin="round" d="M43 48L75 64L75 69L43 85L11 69L11 64Z"/><path fill="#7D89A3" d="M11 64L43 80L75 64L75 69L43 85L11 69Z"/><path fill="#F2F5FA" d="M43 48L75 64L43 80L11 64Z"/><path fill="#0E1424" stroke="#0E1424" stroke-width="2.5" stroke-linejoin="round" d="M57 38L89 54L89 59L57 75L25 59L25 54Z"/><path fill="#C9A800" d="M25 54L57 70L89 54L89 59L57 75L25 59Z"/><path fill="#FFE135" d="M57 38L89 54L57 70L25 54Z"/><path fill="#0E1424" stroke="#0E1424" stroke-width="2.5" stroke-linejoin="round" d="M43 14L75 30L75 35L43 51L11 35L11 30Z"/><path fill="#7D89A3" d="M11 30L43 46L75 30L75 35L43 51L11 35Z"/><path fill="#F2F5FA" d="M43 14L75 30L43 46L11 30Z"/></svg>
+      <span aria-hidden="true"><b>Blame</b>Box</span>
+    </a>
+    <div class="navr">
+      <button class="lang" id="lang" aria-label="Changer de langue">EN</button>
+      <a class="btn small" data-form href="#" data-i18n="nav_cta">Liste d'attente</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1 data-i18n-html="h1">Ta connexion coupe ?<br>Sache enfin <mark>à qui la faute</mark>.</h1>
+      <p class="lead" data-i18n="lead">Wi-Fi, box, opérateur ou DNS : un petit outil libre qui tourne chez toi surveille ta connexion 24 h/24, explique chaque panne en clair… et prépare le rapport à envoyer à ton opérateur.</p>
+      <div class="ctas">
+        <a class="btn" data-form href="#" data-i18n="cta">Rejoindre la liste d'attente</a>
+        <a class="btn ghost" href="rapport.html" data-i18n="cta2">Voir un exemple de rapport</a>
+      </div>
+      <div class="badges">
+        <span class="badge" data-i18n="b1">Gratuit et open source</span>
+        <span class="badge" data-i18n="b2">Tes données restent chez toi</span>
+        <span class="badge" data-i18n="b3">Docker · Raspberry Pi · NAS</span>
+      </div>
+    </div>
+    <div class="notif" aria-label="Exemple de diagnostic">
+      <div class="t"><span>21:14</span><span class="pill red" data-i18n="n_pill">Coupure côté opérateur</span></div>
+      <div class="chain">
+        <span class="ok" data-i18n="c1">Box ✓</span><span class="arrow">→</span>
+        <span class="ko" data-i18n="c2">Internet ✗</span><span class="arrow">→</span>
+        <span class="ko" data-i18n="c3">DNS ✗</span><span class="arrow">→</span>
+        <span class="ko" data-i18n="c4">Web ✗</span>
+      </div>
+      <p data-i18n="n_text">Ta box répond normalement, mais aucun serveur Internet n'est joignable. Le problème est après ta box : sur la ligne ou chez ton opérateur. Rien à changer chez toi.</p>
+      <div class="added" data-i18n="n_added">✓ Ajouté au rapport pour ton opérateur</div>
+    </div>
+  </header>
+
+  <section id="how">
+    <h2 data-i18n="how_t">Comment il trouve la panne</h2>
+    <p class="sec-lead" data-i18n="how_l">Toutes les 30 secondes, il teste ta connexion couche par couche. La première étape qui échoue indique où se situe le problème.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3 data-i18n="s1t">Ta box</h3><p data-i18n="s1p">Elle ne répond plus ? Le souci est chez toi : box, câble ou Wi-Fi.</p></div>
+      <div class="step"><div class="n">2</div><h3 data-i18n="s2t">Internet</h3><p data-i18n="s2p">La box répond, mais plus Internet ? C'est la ligne ou l'opérateur.</p></div>
+      <div class="step"><div class="n">3</div><h3 data-i18n="s3t">Le DNS</h3><p data-i18n="s3p">Internet répond, mais les sites ne s'ouvrent pas ? Le DNS de ton opérateur est en panne, et on te dit comment le contourner.</p></div>
+      <div class="step"><div class="n">4</div><h3 data-i18n="s4t">La qualité</h3><p data-i18n="s4p">Pertes et latence le soir, mesurées vers ta box et au-delà, pour repérer la saturation.</p></div>
+    </div>
+  </section>
+
+  <section id="report">
+    <div class="report">
+      <div>
+        <h2 data-i18n="r_t">Le rapport qui fait bouger ton opérateur</h2>
+        <p class="sec-lead" data-i18n="r_l">Fini les « avez-vous redémarré votre box ? ». Tu envoies des faits.</p>
+        <ul class="checks">
+          <li data-i18n="r1">Chaque coupure horodatée, avec sa durée et sa cause</li>
+          <li data-i18n="r2">La preuve que le problème ne vient pas de chez toi</li>
+          <li data-i18n="r3">Les pertes du soir, en graphique</li>
+          <li data-i18n="r4">Un message pré-rédigé, prêt à envoyer</li>
+        </ul>
+        <a class="btn ghost" href="rapport.html" data-i18n="cta2">Voir un exemple de rapport</a>
+      </div>
+      <a href="rapport.html"><img src="rapport-apercu.jpg" alt="Aperçu d'un rapport d'incidents (données fictives)" loading="lazy"></a>
+    </div>
+  </section>
+
+  <section id="plans">
+    <h2 data-i18n="p_t">Gratuit pour toujours, avec une option Pro</h2>
+    <p class="sec-lead" data-i18n="p_l">Le cœur de l'outil est libre et le restera. Une version Pro est envisagée pour ceux qui en veulent plus.</p>
+    <div class="plans">
+      <div class="plan"><h3 data-i18n="f_t">Gratuit · open source</h3><p class="p" data-i18n="f_p">Pour comprendre ce qui se passe</p>
+        <ul class="checks"><li data-i18n="f1">Diagnostic en direct, expliqué en clair</li><li data-i18n="f2">Alertes : Telegram, ntfy, e-mail…</li><li data-i18n="f3">7 jours d'historique</li></ul></div>
+      <div class="plan pro"><h3 data-i18n="pr_t">Pro · envisagé</h3><p class="p" data-i18n="pr_p">Pour agir et garder des preuves</p>
+        <ul class="checks"><li data-i18n="pr1">Rapport PDF pour ton opérateur</li><li data-i18n="pr2">Historique long</li><li data-i18n="pr3">Plusieurs sites (maison, bureau, parents)</li><li data-i18n="pr4">Rapport hebdomadaire</li></ul></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2 data-i18n="q_t">Questions</h2>
+    <details><summary data-i18n="q1">De quoi ai-je besoin ?</summary><p data-i18n="a1">D'un appareil allumé en permanence et branché en câble sur ta box : Raspberry Pi, NAS, mini-PC, ou un ordinateur avec Docker.</p></details>
+    <details><summary data-i18n="q2">Où vont mes données ?</summary><p data-i18n="a2">Nulle part. Tout tourne et reste chez toi, sans compte ni cloud.</p></details>
+    <details><summary data-i18n="q3">Ça marche avec mon opérateur ?</summary><p data-i18n="a3">Oui, avec tous. Le rapport est pensé pour les opérateurs français (Orange, Free, SFR, Bouygues…), mais les mesures valent partout.</p></details>
+    <details><summary data-i18n="q4">C'est disponible quand ?</summary><p data-i18n="a4">L'outil est en développement. Inscris-toi pour tester la première version et donner ton avis.</p></details>
+  </section>
+
+  <section class="final">
+    <h2 data-i18n="end_t">Envie de savoir enfin pourquoi ça coupe ?</h2>
+    <p class="sec-lead" style="margin-left:auto;margin-right:auto" data-i18n="end_l">Inscris-toi : tu seras prévenu du lancement et tu pourras tester en avant-première.</p>
+    <div class="ctas"><a class="btn" data-form href="#" data-i18n="cta">Rejoindre la liste d'attente</a></div>
+    <p class="privacy" data-i18n="priv">Ton e-mail sert uniquement à te prévenir du lancement. Désinscription en un clic.</p>
+  </section>
+
+  <footer><span data-name>BlameBox</span> · <span data-i18n="foot">projet indépendant en développement</span></footer>
+</div>
+<script>
+// === À personnaliser ===
+const FORM_URL = "https://tally.so/r/pedkEZ";   // lien du formulaire Tally (français)
+const FORM_URL_EN = "";                                    // lien du formulaire anglais (vide = on utilise le français)
+const NAME = "BlameBox";                                   // nom définitif du projet
+// =======================
+const EN = {
+  nav_cta:"Join the waitlist", h1:"Your internet keeps dropping?<br>Finally find out <mark>who's to blame</mark>.",
+  lead:"Wi-Fi, router, ISP or DNS: a small open-source tool that runs at home monitors your connection 24/7, explains every outage in plain words… and writes the report to send to your ISP.",
+  cta:"Join the waitlist", cta2:"See a sample report", b1:"Free and open source", b2:"Your data stays at home", b3:"Docker · Raspberry Pi · NAS",
+  n_pill:"ISP-side outage", c1:"Router ✓", c2:"Internet ✗", c3:"DNS ✗", c4:"Web ✗",
+  n_text:"Your router answers normally, but no Internet server is reachable. The problem is beyond your router: on the line or at your ISP. Nothing to change at home.",
+  n_added:"✓ Added to your ISP report", how_t:"How it finds the fault",
+  how_l:"Every 30 seconds it tests your connection layer by layer. The first step that fails shows where the problem is.",
+  s1t:"Your router", s1p:"Not answering? The issue is at home: router, cable or Wi-Fi.",
+  s2t:"The Internet", s2p:"Router answers but the Internet doesn't? It's the line or your ISP.",
+  s3t:"DNS", s3p:"Internet answers but sites won't load? Your ISP's DNS is down, and we tell you how to bypass it.",
+  s4t:"Quality", s4p:"Evening loss and latency, measured to your router and beyond, to spot congestion.",
+  r_t:"The report that gets your ISP moving", r_l:"No more \"have you restarted your router?\". Send facts.",
+  r1:"Every outage time-stamped, with duration and cause", r2:"Proof the problem isn't on your side", r3:"Evening packet loss, charted", r4:"A pre-written message, ready to send",
+  p_t:"Free forever, with an optional Pro", p_l:"The core is open source and will stay that way. A Pro version is planned for those who want more.",
+  f_t:"Free · open source", f_p:"To understand what's going on", f1:"Live diagnosis, explained in plain words", f2:"Alerts: Telegram, ntfy, e-mail…", f3:"7 days of history",
+  pr_t:"Pro · planned", pr_p:"To act and keep evidence", pr1:"PDF report for your ISP", pr2:"Long history", pr3:"Several sites (home, office, parents)", pr4:"Weekly report",
+  q_t:"Questions", q1:"What do I need?", a1:"A device that's always on and wired to your router: Raspberry Pi, NAS, mini-PC, or a computer with Docker.",
+  q2:"Where does my data go?", a2:"Nowhere. Everything runs and stays at home, no account, no cloud.",
+  q3:"Does it work with my ISP?", a3:"Yes, with any ISP. Measurements are universal; the report templates start with French ISPs and will expand.",
+  q4:"When is it available?", a4:"It's in development. Sign up to test the first version and share your feedback.",
+  end_t:"Ready to finally know why it drops?", end_l:"Sign up: you'll hear about the launch and can try it early.",
+  priv:"Your e-mail is only used to tell you about the launch. One-click unsubscribe.", foot:"independent project in development"
+};
+const FR = {};
+document.querySelectorAll("[data-i18n]").forEach(e => FR[e.dataset.i18n] = e.textContent);
+document.querySelectorAll("[data-i18n-html]").forEach(e => FR[e.dataset.i18nHtml] = e.innerHTML);
+// Provenance du visiteur, transmise au champ caché « ref » du formulaire :
+// le paramètre ?ref=… du lien s'il y en a un, sinon le site d'où il vient.
+let REF = new URLSearchParams(location.search).get("ref") || "direct";
+if (REF === "direct" && document.referrer) { try { REF = new URL(document.referrer).hostname || "direct"; } catch (e) {} }
+function setForms(l) {
+  const base = (l === "en" && FORM_URL_EN) ? FORM_URL_EN : FORM_URL;
+  const url = base + (base.includes("?") ? "&" : "?") + "ref=" + encodeURIComponent(REF.slice(0, 60));
+  document.querySelectorAll("[data-form]").forEach(a => { a.href = url; a.target = "_blank"; a.rel = "noopener"; });
+}
+setForms("fr");
+document.querySelectorAll("[data-name]").forEach(e => e.textContent = NAME);
+let lang = "fr";
+function apply(l) {
+  lang = l; const D = l === "en" ? EN : FR;
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i18n]").forEach(e => { const v = D[e.dataset.i18n]; if (v) e.textContent = v; });
+  document.querySelectorAll("[data-i18n-html]").forEach(e => { const v = D[e.dataset.i18nHtml]; if (v) e.innerHTML = v; });
+  document.getElementById("lang").textContent = l === "en" ? "FR" : "EN";
+  setForms(l);
+}
+document.getElementById("lang").addEventListener("click", () => apply(lang === "fr" ? "en" : "fr"));
+if (!(navigator.language || "fr").toLowerCase().startsWith("fr") || location.hash === "#en") apply("en");
+</script>
+</body>
+</html>
