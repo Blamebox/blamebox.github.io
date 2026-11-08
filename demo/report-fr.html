@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rapport d&#39;incidents de connexion — BlameBox</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="report.css">
+</head>
+<body>
+<div class="bar">
+  <a href="index.html">← Tableau de bord</a>
+  <span class="pro">Fonction Pro, offerte pendant la bêta</span>
+  <span class="grow"></span>
+  
+  <a href="report-en.html">EN</a>
+  <button type="button" id="print" class="btn">Imprimer ou enregistrer en PDF</button>
+</div>
+
+<div class="top">
+  <div>
+    <div class="brand"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true"><path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round" d="M43 48L75 64L75 69L43 85L11 69L11 64Z"/><path fill="#5A6888" d="M11 64L43 80L75 64L75 69L43 85L11 69Z"/><path fill="#0E1424" d="M43 48L75 64L43 80L11 64Z"/><path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round" d="M57 38L89 54L89 59L57 75L25 59L25 54Z"/><path fill="#A86F00" d="M25 54L57 70L89 54L89 59L57 75L25 59Z"/><path fill="#E59A00" d="M57 38L89 54L57 70L25 54Z"/><path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round" d="M43 14L75 30L75 35L43 51L11 35L11 30Z"/><path fill="#5A6888" d="M11 30L43 46L75 30L75 35L43 51L11 35Z"/><path fill="#0E1424" d="M43 14L75 30L43 46L11 30Z"/></svg><span><b>Blame</b>Box</span></div>
+    <h1>Rapport d&#39;incidents de connexion</h1>
+    <div class="sub">Période du sam. 31 oct. 2026 au sam. 7 nov. 2026 · Généré le 07/11/2026 21:30</div>
+  </div>
+  <div class="tag">EXEMPLE · DONNÉES SIMULÉES</div>
+</div>
+
+<div class="kpis"><div class="k"><div class="v">10</div><div class="l">coupures détectées</div></div><div class="k"><div class="v">2 h 10</div><div class="l">de coupure cumulée</div></div><div class="k"><div class="v">100 %</div><div class="l">du temps de coupure côté opérateur</div></div><div class="k"><div class="v">8 / 10</div><div class="l">coupures entre 19 h et 23 h</div></div></div>
+<div class="verdict"><b>Diagnostic :</b> pendant les 2 h 10 de coupure, la box restait joignable alors qu'Internet ne l'était plus. Le problème se situe <b>après la box, sur la ligne ou chez l'opérateur</b>.</div>
+
+<h2>Chronologie des coupures</h2>
+<svg viewBox="0 0 720 200" width="100%" role="img" aria-label="Chronologie des coupures" xmlns="http://www.w3.org/2000/svg" font-family="Inter, Arial, sans-serif" font-size="10"><rect x="603.3" y="14" width="80.0" height="164" fill="#FEF2F2"/><text x="643.3" y="11" text-anchor="middle" fill="#B42318" font-size="9">soirée</text><line x1="70.0" x2="70.0" y1="14" y2="182" stroke="#E5E7EB"/><text x="70.0" y="194" text-anchor="middle" fill="#6B7280" font-size="9">00h</text><line x1="150.0" x2="150.0" y1="14" y2="182" stroke="#E5E7EB"/><text x="150.0" y="194" text-anchor="middle" fill="#6B7280" font-size="9">03h</text><line x1="230.0" x2="230.0" y1="14" y2="182" stroke="#E5E7EB"/><text x="230.0" y="194" text-anchor="middle" fill="#6B7280" font-size="9">06h</text><line x1="310.0" x2="310.0" y1="14" y2="182" stroke="#E5E7EB"/><text x="310.0" y="194" text-anchor="middle" fill="#6B7280" font-size="9">09h</text><line x1="390.0" x2="390.0" y1="14" y2="182" stroke="#E5E7EB"/><text x="390.0" y="194" text-anchor="middle" fill="#6B7280" font-size="9">12h</text><line x1="470.0" x2="470.0" y1="14" y2="182" stroke="#E5E7EB"/><text x="470.0" y="194" text-anchor="middle" fill="#6B7280" font-size="9">15h</text><line x1="550.0" x2="550.0" y1="14" y2="182" stroke="#E5E7EB"/><text x="550.0" y="194" text-anchor="middle" fill="#6B7280" font-size="9">18h</text><line x1="630.0" x2="630.0" y1="14" y2="182" stroke="#E5E7EB"/><text x="630.0" y="194" text-anchor="middle" fill="#6B7280" font-size="9">21h</text><line x1="710.0" x2="710.0" y1="14" y2="182" stroke="#E5E7EB"/><text x="710.0" y="194" text-anchor="middle" fill="#6B7280" font-size="9">24h</text><text x="0" y="31.0" fill="#374151">sam. 31</text><rect x="70.0" y="21.0" width="640.0" height="14.0" rx="3" fill="#F3F4F6"/><rect x="644.0" y="29.0" width="35.3" height="6.0" rx="2" fill="#FB923C"/><text x="0" y="51.0" fill="#374151">dim. 1</text><rect x="70.0" y="41.0" width="640.0" height="14.0" rx="3" fill="#F3F4F6"/><rect x="604.2" y="41.0" width="3.1" height="14.0" rx="2" fill="#E5484D"/><rect x="617.8" y="49.0" width="55.1" height="6.0" rx="2" fill="#FB923C"/><rect x="647.3" y="41.0" width="5.3" height="14.0" rx="2" fill="#E5484D"/><text x="0" y="71.0" fill="#374151">lun. 2</text><rect x="70.0" y="61.0" width="640.0" height="14.0" rx="3" fill="#F3F4F6"/><rect x="365.6" y="61.0" width="6.2" height="14.0" rx="2" fill="#F5A524"/><rect x="635.6" y="69.0" width="3.1" height="6.0" rx="2" fill="#FB923C"/><rect x="649.6" y="69.0" width="4.0" height="6.0" rx="2" fill="#FB923C"/><rect x="658.0" y="61.0" width="2.5" height="14.0" rx="2" fill="#E5484D"/><rect x="664.2" y="69.0" width="2.9" height="6.0" rx="2" fill="#FB923C"/><text x="0" y="91.0" fill="#374151">mar. 3</text><rect x="70.0" y="81.0" width="640.0" height="14.0" rx="3" fill="#F3F4F6"/><rect x="613.8" y="89.0" width="6.0" height="6.0" rx="2" fill="#FB923C"/><rect x="624.9" y="89.0" width="44.4" height="6.0" rx="2" fill="#FB923C"/><rect x="636.7" y="81.0" width="10.7" height="14.0" rx="2" fill="#E5484D"/><rect x="687.6" y="89.0" width="3.1" height="6.0" rx="2" fill="#FB923C"/><text x="0" y="111.0" fill="#374151">mer. 4</text><rect x="70.0" y="101.0" width="640.0" height="14.0" rx="3" fill="#F3F4F6"/><rect x="618.0" y="101.0" width="4.9" height="14.0" rx="2" fill="#E5484D"/><rect x="626.7" y="109.0" width="36.4" height="6.0" rx="2" fill="#FB923C"/><rect x="680.7" y="101.0" width="10.7" height="14.0" rx="2" fill="#E5484D"/><text x="0" y="131.0" fill="#374151">jeu. 5</text><rect x="70.0" y="121.0" width="640.0" height="14.0" rx="3" fill="#F3F4F6"/><rect x="617.6" y="129.0" width="2.5" height="6.0" rx="2" fill="#FB923C"/><rect x="640.7" y="129.0" width="4.4" height="6.0" rx="2" fill="#FB923C"/><rect x="650.7" y="129.0" width="2.7" height="6.0" rx="2" fill="#FB923C"/><rect x="660.0" y="129.0" width="4.2" height="6.0" rx="2" fill="#FB923C"/><text x="0" y="151.0" fill="#374151">ven. 6</text><rect x="70.0" y="141.0" width="640.0" height="14.0" rx="3" fill="#F3F4F6"/><rect x="400.7" y="141.0" width="2.7" height="14.0" rx="2" fill="#F5A524"/><rect x="609.1" y="149.0" width="69.1" height="6.0" rx="2" fill="#FB923C"/><rect x="686.0" y="149.0" width="8.9" height="6.0" rx="2" fill="#FB923C"/><text x="0" y="171.0" fill="#374151">sam. 7</text><rect x="70.0" y="161.0" width="640.0" height="14.0" rx="3" fill="#F3F4F6"/><rect x="604.7" y="161.0" width="9.8" height="14.0" rx="2" fill="#E5484D"/><rect x="631.3" y="169.0" width="2.5" height="6.0" rx="2" fill="#FB923C"/><rect x="640.7" y="161.0" width="2.7" height="14.0" rx="2" fill="#E5484D"/></svg>
+<div class="legend"><span><i style="background:#E5484D"></i>Coupure côté opérateur</span><span><i style="background:#F5A524"></i>Panne DNS</span><span><i style="background:#8A94A6"></i>Côté domicile</span><span><i style="background:#FB923C"></i>Pertes de paquets</span></div>
+
+<h2>Détail des coupures</h2>
+
+<div class="tw"><table>
+<tr><th>Jour</th><th>Heure</th><th class="r">Durée</th><th>Incident</th><th>Preuve mesurée</th><th>Côté</th></tr>
+<tr><td>dim. 1 nov.</td><td>20:02–20:09</td><td class="r">7 min</td><td><i class="dot" style="background:#E5484D"></i>Coupure côté opérateur</td><td class="muted">Box joignable pendant 14 des 14 mesures en échec ; serveurs Internet injoignables.</td><td>Opérateur</td></tr>
+<tr><td>dim. 1 nov.</td><td>21:39–21:51</td><td class="r">12 min</td><td><i class="dot" style="background:#E5484D"></i>Coupure côté opérateur</td><td class="muted">Box joignable pendant 24 des 24 mesures en échec ; serveurs Internet injoignables.</td><td>Opérateur</td></tr>
+<tr><td>lun. 2 nov.</td><td>11:05–11:19</td><td class="r">14 min</td><td><i class="dot" style="background:#F5A524"></i>Panne DNS de l&#39;opérateur</td><td class="muted">DNS de la box muet ; DNS publics joignables pendant 28 des 28 mesures.</td><td>Opérateur</td></tr>
+<tr><td>lun. 2 nov.</td><td>22:03–22:07</td><td class="r">4 min</td><td><i class="dot" style="background:#E5484D"></i>Coupure côté opérateur</td><td class="muted">Box joignable pendant 8 des 8 mesures en échec ; serveurs Internet injoignables.</td><td>Opérateur</td></tr>
+<tr><td>mar. 3 nov.</td><td>21:15–21:39</td><td class="r">24 min</td><td><i class="dot" style="background:#E5484D"></i>Coupure côté opérateur</td><td class="muted">Box joignable pendant 48 des 48 mesures en échec ; serveurs Internet injoignables. Nouvelle IP publique après l&#39;incident.</td><td>Opérateur</td></tr>
+<tr><td>mer. 4 nov.</td><td>20:33–20:44</td><td class="r">11 min</td><td><i class="dot" style="background:#E5484D"></i>Coupure côté opérateur</td><td class="muted">Box joignable pendant 22 des 22 mesures en échec ; serveurs Internet injoignables.</td><td>Opérateur</td></tr>
+<tr><td>mer. 4 nov.</td><td>22:54–23:18</td><td class="r">24 min</td><td><i class="dot" style="background:#E5484D"></i>Coupure côté opérateur</td><td class="muted">Box joignable pendant 48 des 48 mesures en échec ; serveurs Internet injoignables. Nouvelle IP publique après l&#39;incident.</td><td>Opérateur</td></tr>
+<tr><td>ven. 6 nov.</td><td>12:24–12:30</td><td class="r">6 min</td><td><i class="dot" style="background:#F5A524"></i>Panne DNS de l&#39;opérateur</td><td class="muted">DNS de la box muet ; DNS publics joignables pendant 12 des 12 mesures.</td><td>Opérateur</td></tr>
+<tr><td>sam. 7 nov.</td><td>20:03–20:25</td><td class="r">22 min</td><td><i class="dot" style="background:#E5484D"></i>Coupure côté opérateur</td><td class="muted">Box joignable pendant 44 des 44 mesures en échec ; serveurs Internet injoignables. Nouvelle IP publique après l&#39;incident.</td><td>Opérateur</td></tr>
+<tr><td>sam. 7 nov.</td><td>21:24–…</td><td class="r">6 min (en cours)</td><td><i class="dot" style="background:#E5484D"></i>Coupure côté opérateur</td><td class="muted">Box joignable pendant 13 des 13 mesures en échec ; serveurs Internet injoignables.</td><td>Opérateur</td></tr>
+</table></div>
+
+
+
+<h2>Pertes de paquets</h2>
+<div class="tw"><table>
+<tr><th>Jour</th><th>Heure</th><th class="r">Durée</th><th>Incident</th><th>Preuve mesurée</th><th>Côté</th></tr>
+<tr><td>sam. 31 oct.</td><td>21:31–22:51</td><td class="r">1 h 19</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 10 % vers Internet, 0,4 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>dim. 1 nov.</td><td>20:32–22:36</td><td class="r">2 h 04</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 7,6 % vers Internet, 0,2 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>lun. 2 nov.</td><td>21:12–21:19</td><td class="r">7 min</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 4,8 % vers Internet, 0,0 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>lun. 2 nov.</td><td>21:44–21:53</td><td class="r">9 min</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 3,7 % vers Internet, 0,0 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>lun. 2 nov.</td><td>22:17–22:23</td><td class="r">6 min</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 5,1 % vers Internet, 0,0 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>mar. 3 nov.</td><td>20:23–20:37</td><td class="r">13 min</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 5,6 % vers Internet, 0,0 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>mar. 3 nov.</td><td>20:48–22:28</td><td class="r">1 h 40</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 7,0 % vers Internet, 0,0 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>mar. 3 nov.</td><td>23:09–23:16</td><td class="r">7 min</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 3,0 % vers Internet, 0,0 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>mer. 4 nov.</td><td>20:52–22:14</td><td class="r">1 h 22</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 7,1 % vers Internet, 0,0 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>jeu. 5 nov.</td><td>20:32–20:34</td><td class="r">2 min</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 3,3 % vers Internet, 0,0 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>jeu. 5 nov.</td><td>21:24–21:34</td><td class="r">10 min</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 5,0 % vers Internet, 0,0 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>jeu. 5 nov.</td><td>21:46–21:52</td><td class="r">6 min</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 2,8 % vers Internet, 0,0 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>jeu. 5 nov.</td><td>22:07–22:17</td><td class="r">9 min</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 4,2 % vers Internet, 0,0 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>ven. 6 nov.</td><td>20:13–22:48</td><td class="r">2 h 35</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 8,0 % vers Internet, 0,1 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>ven. 6 nov.</td><td>23:06–23:26</td><td class="r">20 min</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 6,8 % vers Internet, 0,0 % vers la box.</td><td>Opérateur</td></tr>
+<tr><td>sam. 7 nov.</td><td>21:03–21:05</td><td class="r">2 min</td><td><i class="dot" style="background:#FB923C"></i>Pertes côté opérateur</td><td class="muted">Pertes moyennes : 8,3 % vers Internet, 8,3 % vers la box.</td><td>Opérateur</td></tr>
+</table></div>
+
+
+<div class="page2">
+
+<h2>Pertes de paquets selon l&#39;heure (moyenne de la période)</h2>
+<svg viewBox="0 0 720 190" width="100%" role="img" aria-label="Pertes de paquets selon l&#39;heure (moyenne de la période)" xmlns="http://www.w3.org/2000/svg" font-family="Inter, Arial, sans-serif" font-size="10"><line x1="40" x2="710" y1="168.0" y2="168.0" stroke="#E5E7EB"/><text x="34" y="171.0" text-anchor="end" fill="#6B7280">0 %</text><line x1="40" x2="710" y1="129.0" y2="129.0" stroke="#E5E7EB"/><text x="34" y="132.0" text-anchor="end" fill="#6B7280">2 %</text><line x1="40" x2="710" y1="90.0" y2="90.0" stroke="#E5E7EB"/><text x="34" y="93.0" text-anchor="end" fill="#6B7280">4 %</text><line x1="40" x2="710" y1="51.0" y2="51.0" stroke="#E5E7EB"/><text x="34" y="54.0" text-anchor="end" fill="#6B7280">6 %</text><line x1="40" x2="710" y1="12.0" y2="12.0" stroke="#E5E7EB"/><text x="34" y="15.0" text-anchor="end" fill="#6B7280">8 %</text><text x="40.0" y="184" text-anchor="middle" fill="#6B7280">00h</text><text x="127.4" y="184" text-anchor="middle" fill="#6B7280">03h</text><text x="214.8" y="184" text-anchor="middle" fill="#6B7280">06h</text><text x="302.2" y="184" text-anchor="middle" fill="#6B7280">09h</text><text x="389.6" y="184" text-anchor="middle" fill="#6B7280">12h</text><text x="477.0" y="184" text-anchor="middle" fill="#6B7280">15h</text><text x="564.3" y="184" text-anchor="middle" fill="#6B7280">18h</text><text x="651.7" y="184" text-anchor="middle" fill="#6B7280">21h</text><polyline points="40.0,166.5 69.1,163.4 98.3,165.7 127.4,163.4 156.5,164.1 185.7,163.4 214.8,164.9 243.9,160.3 273.0,164.9 302.2,162.6 331.3,163.4 360.4,161.6 389.6,167.2 418.7,161.0 447.8,167.2 477.0,165.7 506.1,164.1 535.2,161.8 564.3,161.8 593.5,164.1 622.6,163.7 651.7,165.4 680.9,164.8 710.0,163.1" fill="none" stroke="#0F766E" stroke-width="2.2" stroke-linejoin="round"/><polyline points="40.0,168.0 69.1,168.0 98.3,168.0 127.4,168.0 156.5,168.0 185.7,168.0 214.8,168.0 243.9,168.0 273.0,168.0 302.2,168.0 331.3,168.0 360.4,168.0 389.6,168.0 418.7,168.0 447.8,168.0 477.0,168.0 506.1,168.0 535.2,168.0 564.3,168.0 593.5,159.5 622.6,101.3 651.7,39.5 680.9,89.9 710.0,154.7" fill="none" stroke="#E5484D" stroke-width="2.2" stroke-linejoin="round"/><rect x="46" y="4" width="10" height="3" fill="#E5484D"/><text x="60" y="9" fill="#374151">Vers Internet</text><rect x="200" y="4" width="10" height="3" fill="#0F766E"/><text x="214" y="9" fill="#374151">Vers la box</text></svg>
+<p class="note">Des pertes vers Internet nettement plus fortes que vers la box, surtout le soir, indiquent une saturation ou un défaut en amont de la box.</p>
+
+
+<h2>Message prêt à envoyer à ton opérateur <button type="button" id="copy" class="btn small" data-done="Copié !">Copier le message</button></h2>
+<div class="msg" id="msg">Bonjour,
+
+Depuis le dim. 1 nov. 2026, ma connexion subit des coupures répétées, principalement en soirée (10 incidents côté réseau, 2 h 10 cumulées entre le sam. 31 oct. 2026 et le sam. 7 nov. 2026). Pendant chacune de ces coupures, ma box restait joignable depuis mon réseau local alors que les serveurs Internet ne l&#39;étaient plus : le problème se situe donc en amont de mon installation. Le serveur DNS fourni par ma box a par ailleurs cessé de répondre à 2 reprises, alors que des DNS publics répondaient. J&#39;observe également jusqu&#39;à 6,6 % de pertes de paquets vers Internet à certaines heures, contre 0,1 % sur mon réseau local.
+
+Vous trouverez ci-joint le rapport détaillé, horodaté. Merci de procéder à une vérification de ma ligne et de m&#39;indiquer les mesures prévues.
+
+[Nom] · [Identifiant client / numéro de ligne]</div>
+
+<h2>Comment ces mesures ont été faites</h2>
+<ul class="method"><li>Une sonde branchée en câble sur la box teste la connexion à intervalle régulier, 24 h/24.</li><li>Chaque mesure vérifie dans l&#39;ordre : la box (passerelle), des serveurs Internet par adresse IP, la traduction des noms (DNS de la box et DNS publics), puis l&#39;accès à une page web.</li><li>La première étape qui échoue indique où se situe la panne. Une coupure n&#39;est comptée qu&#39;après plusieurs mesures en échec d&#39;affilée, pour éviter les fausses alertes.</li><li>Les heures sont en heure locale. Les données brutes restent chez l&#39;utilisateur et peuvent être exportées.</li></ul>
+<div class="foot">BlameBox · logiciel libre auto-hébergé · rapport généré à partir de mesures locales</div>
+</div>
+<script src="report.js"></script>
+</body>
+</html>
